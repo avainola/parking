@@ -1,0 +1,12 @@
+{
+  "name": "parking",
+  "dependencies": {
+    "angular": "latest",
+    "angular-resource": "latest",
+    "bootstrap-css-only": "latest",
+    "angular-bootstrap": "latest",
+    "angular-route": "latest",
+    "angular-animate": "latest",
+    "angular-touch": "latest"
+  }
+}

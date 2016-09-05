@@ -1,0 +1,25 @@
+<div>
+    <div class="alert alert-info" role="alert" ng-hide="parkings &amp;&amp; parkings.length > 0">
+        There are no items.
+    </div>
+    <table class="table table-striped" ng-show="parkings &amp;&amp; parkings.length > 0">
+        <thead>
+            <tr>
+                <th><span class="pointer" ng-click="parkingsOrder.sort('startTime')">Start</span></th>
+                <th><span class="pointer" ng-click="parkingsOrder.sort('endTime')">End</span></th>
+                <th><span class="pointer" ng-click="parkingsOrder.sort('parkingHouse.name')">Parking house</span></th>
+                <th><span class="pointer" ng-click="parkingsOrder.sort('parkingHouse.address')">Address</span></th>
+                <th><span class="pointer" ng-click="parkingsOrder.sort('fee')">Invoiced</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="parking in parkings | orderBy:parkingsOrder.column:parkingsOrder.reverse">
+                <td ng-bind="parking.startTime | date : 'd-MMM-yy H:mm'"></td>
+                <td ng-bind="parking.endTime | date : 'd-MMM-yy H:mm'"></td>
+                <td ng-bind="parking.parkingHouse.name"></td>
+                <td ng-bind="parking.parkingHouse.address"></td>
+                <td><span ng-show="parking.fee" class="glyphicon glyphicon-ok"></span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

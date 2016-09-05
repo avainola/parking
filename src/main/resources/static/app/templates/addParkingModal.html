@@ -1,0 +1,42 @@
+<form id="newParking" class="form-horizontal" ng-submit="ok(newParking)">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Add parking</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="start">Start</label>
+            <div class="col-sm-6">
+                <input type="datetime-local" ng-model="newParking.start"
+                id="start" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="end">End</label>
+            <div class="col-sm-6">
+                <input type="datetime-local" ng-model="newParking.end"
+                id="end" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="parkingHouse">Parking house</label>
+            <div class="col-sm-6">
+                <select ng-model="newParking.parkingHouse" class="form-control"
+                id="parkingHouse" ng-options="ph.name for ph in parkingHouses" required>
+                    <option value="">- Select parking house -</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Address</label>
+            <div class="col-sm-6">
+                <p class="form-control-static"
+                ng-bind="newParking.parkingHouse.address">email@example.com</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input class="btn btn-primary" type="submit" value="OK">
+        <input class="btn btn-warning" type="button" value="Cancel"
+        ng-click="cancel()">
+    </div>
+</form>

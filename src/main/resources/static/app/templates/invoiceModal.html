@@ -1,0 +1,54 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">&times;</button>
+        <h4 class="modal-title">Invoice {{invoice.reference}}</h4>
+    </div>
+    <div class="modal-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Parking house</th>
+                    <th>Address</th>
+                    <th>Fee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="parking in invoice.parkings | orderBy: 'start'">
+                    <td ng-bind="parking.startTime | date : 'd-MMM-yy H:mm'"></td>
+                    <td ng-bind="parking.endTime | date : 'd-MMM-yy H:mm'"></td>
+                    <td ng-bind="parking.parkingHouse.name"></td>
+                    <td ng-bind="parking.parkingHouse.address"></td>
+                    <td ng-bind="parking.fee | currency:'€':2"></td>
+                </tr>
+                <tr ng-if="invoice.parkings.length > 0">
+                    <th colspan="4">Subtotal:</th>
+                    <td ng-bind="subtotal | currency:'€':2"></td>
+                </tr>
+                <tr ng-if="invoice.parkings.length === 0">
+                    <td colspan="5">No parkings in this period.</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td colspan="4">Monthly fee:</td>
+                    <td ng-bind="invoice.monthlyFee | currency:'€':2"></td>
+                </tr>
+                <tr ng-if="invoice.maxFee && invoice.maxFee < (subtotal + invoice.monthlyFee)">
+                    <td colspan="4">Max fee:</td>
+                    <td ng-bind="invoice.maxFee | currency:'€':2"></td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th colspan="4">Total:</th>
+                    <td ng-bind="invoice.total | currency:'€':2"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+    </div>
+</div>

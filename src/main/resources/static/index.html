@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./app/styles/main.css" />
+    <title>Demo parking App</title>
+</head>
+
+<body ng-app="parkingApp">
+    <nav class="navbar navbar-default navbar-fixed-top"  ng-init="isCollapsed = true">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Parking App</a>
+            </div>
+            <div id="navbar" class="navbar-collapse" uib-collapse="isCollapsed">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{active: $location.path().split('/')[1] === 'clients'}">
+                        <a href="#/clients" ng-click="isCollapsed = true">Clients</a>
+                    </li>
+                    <li ng-class="{active: $location.path().split('/')[1] === 'parkings'}">
+                        <a href="#/parkings" ng-click="isCollapsed = true">Parkings</a>
+                    </li>
+                    <li ng-class="{active: $location.path().split('/')[1] === 'invoices'}">
+                        <a href="#/invoices" ng-click="isCollapsed = true">Invoices</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div ng-view></div>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-resource.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-touch.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.3/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="./app/app.js"></script>
+    <script type="text/javascript" src="./app/scripts/services.js"></script>
+    <script type="text/javascript" src="./app/scripts/clientController.js"></script>
+    <script type="text/javascript" src="./app/scripts/clientsController.js"></script>
+    <script type="text/javascript" src="./app/scripts/parkingsController.js"></script>
+    <script type="text/javascript" src="./app/scripts/invoicesController.js"></script>
+    <script type="text/javascript" src="./app/scripts/invoiceModalController.js"></script>
+</body>
+
+</html>

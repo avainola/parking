@@ -1,0 +1,33 @@
+<div>
+    <div class="page-header">
+        <h1>
+            {{client.name}}
+            <button class="btn btn-primary pull-right"
+            ng-click="back()">Back</button>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-4" ng-bind="client.clientType.name"></div>
+        <div class="col-xs-4">
+            Monthly fee: <span ng-bind="client.clientType.monthlyFee | currency:'€':2"></span>
+        </div>
+        <div class="col-xs-4" ng-show="client.clientType.maxFee">
+            Max fee: <span ng-bind="client.clientType.maxFee | currency:'€':2"></span>
+        </div>
+    </div>
+    <div>
+        <h2>
+            Parkings
+            <button class="btn btn-info pull-right"
+            ng-click="addParking(newParkingParkingHouse, newParkingStart, newParkingEnd)">Add</button>
+        </h2>
+    </div>
+    <div ng-include="'app/templates/parkingTable.html'"></div>
+    <div>
+        <h2>
+            Invoices
+            <button class="btn btn-info pull-right" ng-click="createInvoice()">Create</button>
+        </h2>
+    </div>
+    <div ng-include="'app/templates/invoiceTable.html'"></div>
+</div>

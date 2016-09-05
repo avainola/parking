@@ -1,0 +1,22 @@
+<div>
+    <div class="alert alert-info" role="alert" ng-hide="invoices &amp;&amp; invoices.length > 0">
+        There are no items.
+    </div>
+    <table class="table table-striped" ng-show="invoices &amp;&amp; invoices.length > 0">
+        <thead>
+            <tr>
+                <th><span class="pointer" ng-click="invoicesOrder.sort('created')">Created</span></th>
+                <th><span class="pointer" ng-click="invoicesOrder.sort('total')">Total</span></th>
+                <th><span class="pointer" ng-click="invoicesOrder.sort('reference')">Reference</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="invoice in invoices | orderBy:invoicesOrder.column:invoicesOrder.reverse"
+            class="pointer" ng-click="showInvoice(invoice)">
+                <td ng-bind="invoice.created | date : 'd-MMM-yy'"></td>
+                <td ng-bind="invoice.total | currency:'€':2"></td>
+                <td ng-bind="invoice.reference"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
